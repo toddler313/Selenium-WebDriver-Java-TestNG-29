@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+    To run multiple suites at a time
+-->
+
+<suite name="Tiki App" verbose="1">
+    
+    <suite-files>
+        <suite-file path="admin/tiki_Admin.xml"/>
+        <suite-file path="user/tiki_User.xml"/>
+    </suite-files>
+    
+</suite>

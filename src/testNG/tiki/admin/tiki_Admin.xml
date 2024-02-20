@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<!--
+    <groups> - <packages> : to define which group (specified above the method name) on which package will be executed.
+-->
+
+<suite name="Suite" verbose="1" parallel="false">
+
+<!--
+    We can place <groups><run><include> inside (as local) Or outside (as global) of a <test>
+
+-->
+
+    <groups>
+        <run>
+            <include name="cart"/>
+        </run>
+    </groups>
+    <test name="Tiki Admin Cart">
+        <packages>
+            <package name="testNG.tiki.admin"/>
+        </packages>
+    </test>
+
+<!--    <test name="Tiki Admin Product">-->
+<!--        <groups>-->
+<!--            <run>-->
+<!--                <include name="product"/>-->
+<!--            </run>-->
+<!--        </groups>-->
+<!--        <packages>-->
+<!--            <package name="testNG.tiki.admin"/>-->
+<!--        </packages>-->
+<!--    </test>-->
+
+</suite>

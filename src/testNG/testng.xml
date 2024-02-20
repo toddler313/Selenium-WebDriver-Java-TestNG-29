@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="Suite" verbose="1">
+<!--
+    parallel="" : configure to run test in different browsers & environments parallelly.
+    thread-count="n" : with n = how many tests are allowed to run at a time.
+
+    BEST PRACTICE: PARALLEL IN MULTIPLE DEVICES AS FOR THE SAKE OF HOVERING OR ACTIONS TCs
+    IF RUN IN 1 DEVICE, CONSIDER USING DOCKER
+-->
+
+<suite name="Suite" verbose="1" parallel="tests" thread-count="3">
     <test name="Regression1">
         <classes>
 <!--            <class name="testNG.TC01_Annotations">-->
@@ -20,13 +28,81 @@
 <!--                </methods>-->
 <!--            </class>-->
 
-            <class name="testNG.TC04_DataProvider">
-                <methods>
-                    <include name="TC_01_LoginToSystem"/>
-                </methods>
-            </class>
+<!--            <class name="testNG.TC04_DataProvider">-->
+<!--                <methods>-->
+<!--                    <include name="TC_01_LoginToSystem"/>-->
+<!--                </methods>-->
+<!--            </class>-->
 
+<!--            <class name="testNG.TC04_DataProvider_2">-->
+<!--                <methods>-->
+<!--                    <include name="TC_01_LoginToSystem"/>-->
+<!--                    <include name="TC_02_LoginToSystem"/>-->
+<!--                    <include name="TC_03_LoginToSystem"/>-->
+<!--                </methods>-->
+<!--            </class>-->
         </classes>
-
     </test>
+
+
+<!--
+    DEMO TIKI APP
+-->
+    <test name="Tiki Web">
+        <groups>
+            <run>
+                <include name="cart"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="testNG.tiki.admin"/>
+        </packages>
+    </test>
+
+
+    <!--
+            PARAMETER HERE IS GLOBAL VARIABLE
+            PARAMETERS CONFIGURATION TO RUN ON MULTIPLE ENVIRONMENTS
+            ****************************************************
+
+            Configure the value of the global parameter below (production/live/dev/test) to run on different environments
+    -->
+    <parameter name="testEnvironment" value="live"/>
+
+
+    <!--
+        PARAMETERS CONFIGURATION TO RUN ON MULTIPLE BROWSERS
+        ****************************************************
+    -->
+    <test name="FIREFOX">
+        <!--
+            PARAMETER HERE IS LOCAL VARIABLE
+        -->
+        <parameter name="testBrowser" value="firefox"/>
+        <classes>
+<!--            <class name="testNG.TC05_Parameters_MultiBrowsers"/>-->
+                <class name="testNG.TC06_A_Parameters_MultiBrowsers_MultiEnv"/>
+        </classes>
+    </test>
+    <test name="CHROME">
+        <!--
+            PARAMETER HERE IS LOCAL VARIABLE
+        -->
+        <parameter name="testBrowser" value="chrome"/>
+        <classes>
+<!--            <class name="testNG.TC05_Parameters_MultiBrowsers"/>-->
+            <class name="testNG.TC06_A_Parameters_MultiBrowsers_MultiEnv"/>
+        </classes>
+    </test>
+    <test name="EDGE">
+        <!--
+            PARAMETER HERE IS LOCAL VARIABLE
+        -->
+        <parameter name="testBrowser" value="edge"/>
+        <classes>
+<!--            <class name="testNG.TC05_Parameters_MultiBrowsers"/>-->
+            <class name="testNG.TC06_A_Parameters_MultiBrowsers_MultiEnv"/>
+        </classes>
+    </test>
+
 </suite>

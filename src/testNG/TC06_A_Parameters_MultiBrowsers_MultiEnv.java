@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import testNG.tiki.admin.BaseTest;
 
-public class TC05_Parameters_MultiBrowsers extends BaseTest {
+public class TC06_A_Parameters_MultiBrowsers_MultiEnv extends BaseTest {
 
     By emailTextbox = By.xpath("//input[@id='email']");
     By passwordTextbox = By.xpath("//input[@id='pass']");
@@ -16,9 +16,11 @@ public class TC05_Parameters_MultiBrowsers extends BaseTest {
         System.out.println("=== Init From Parameters ===");
     }
 
+    @Parameters("testEnvironment")
     @Test
-    public void TC_01_LoginToSystem(String environmentValue) {
-        driver.get("http://live.techpanda.org/index.php/customer/account/login/");
+    public void TC_01_LoginToSystem(@Optional("live") String environmentValue) {
+        String envUrl = getEnvironmentValue(environmentValue);
+        driver.get(envUrl + "/index.php/customer/account/login/");
 
         driver.findElement(emailTextbox).sendKeys("selenium_11_01@gmail.com");
         driver.findElement(passwordTextbox).sendKeys("111111");
