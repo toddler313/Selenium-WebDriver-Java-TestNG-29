@@ -11,7 +11,6 @@
     We can place <groups><run><include> inside (as local) Or outside (as global) of a <test>
 
 -->
-
     <groups>
         <run>
             <include name="cart"/>

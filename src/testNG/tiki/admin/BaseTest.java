@@ -70,6 +70,10 @@ public class BaseTest {
         }
     }
 
+    public WebDriver getDriver() {
+        return this.driver;
+    }
+
     @AfterTest(alwaysRun = true)
     public void cleanBrowser() {
         System.out.println("Clean Up browser");

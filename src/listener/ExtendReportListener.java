@@ -25,7 +25,7 @@ public class ExtendReportListener extends BaseTest implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        TakesScreenshot shot = (TakesScreenshot) (new TC09_Listener_ITestListener()).getWebDriver();
+        TakesScreenshot shot = (TakesScreenshot) (new TC09_Listener_ITestListener()).getDriver();
         File srcFile = shot.getScreenshotAs(OutputType.FILE);
         try {
             File destFile = new File("./screenshot/" + result.getName() + ".jpg");

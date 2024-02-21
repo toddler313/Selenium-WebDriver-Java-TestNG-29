@@ -59,7 +59,8 @@ public class TC09_Listener_ITestListener extends BaseTest {
         driver.findElement(myAccountHeaderLocator).click();
 
         explicitWait.until(ExpectedConditions.visibilityOfElementLocated(welcomeMessageLocator));
-        Assert.assertFalse(driver.findElement(welcomeMessageLocator).getText().contains(fName));        //Set Failure here to catch ITestListener on taking screenshot
+//        Assert.assertTrue(driver.findElement(welcomeMessageLocator).getText().contains(fName));
+        Assert.assertTrue(driver.findElement(welcomeMessageLocator).getText().equals("abc"));   //Set Failure here to configure ITestListener taking screenshot
 
         String details = driver.findElement(By.cssSelector(".col-1 p")).getText();
         Assert.assertTrue(details.contains(email));
@@ -68,10 +69,6 @@ public class TC09_Listener_ITestListener extends BaseTest {
         driver.findElement(By.xpath("//a[text()='Log Out']")).click();
 
         System.out.println(fName + " " + lName + " " + email + " " + password);
-    }
-
-    public WebDriver getWebDriver() {
-        return driver;
     }
 
 

@@ -1,16 +1,12 @@
 package testNG;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import testNG.tiki.admin.BaseTest;
 
-import java.time.Duration;
-
-public class TC_08_dependsOnMethods extends BaseTest {
+public class TC08_dependsOnMethods extends BaseTest {
 
     @BeforeClass
     public void beforeClass() {

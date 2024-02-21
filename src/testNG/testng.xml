@@ -10,7 +10,20 @@
 -->
 
 <suite name="Suite" verbose="1" parallel="tests" thread-count="3">
-    <test name="Regression1">
+
+<!--
+    Add Listeners to take screenshot on failure
+-->
+<!--    <listeners>-->
+<!--        -->
+<!--    </listeners>-->
+
+
+
+<!--
+    preserve-order="true" : means honoring the execution order we <include> in the <methods>
+-->
+    <test name="Regression1" preserve-order="true">
         <classes>
 <!--            <class name="testNG.TC01_Annotations">-->
 <!--                <methods>-->
@@ -48,16 +61,16 @@
 <!--
     DEMO TIKI APP
 -->
-    <test name="Tiki Web">
-        <groups>
-            <run>
-                <include name="cart"/>
-            </run>
-        </groups>
-        <packages>
-            <package name="testNG.tiki.admin"/>
-        </packages>
-    </test>
+<!--    <test name="Tiki Web">-->
+<!--        <groups>-->
+<!--            <run>-->
+<!--                <include name="cart"/>-->
+<!--            </run>-->
+<!--        </groups>-->
+<!--        <packages>-->
+<!--            <package name="testNG.tiki.admin"/>-->
+<!--        </packages>-->
+<!--    </test>-->
 
 
     <!--
@@ -81,28 +94,30 @@
         <parameter name="testBrowser" value="firefox"/>
         <classes>
 <!--            <class name="testNG.TC05_Parameters_MultiBrowsers"/>-->
-                <class name="testNG.TC06_A_Parameters_MultiBrowsers_MultiEnv"/>
+<!--                <class name="testNG.TC06_A_Parameters_MultiBrowsers_MultiEnv"/>-->
+            <class name="testNG.TC09_Listener_ITestListener"/>
         </classes>
     </test>
-    <test name="CHROME">
-        <!--
-            PARAMETER HERE IS LOCAL VARIABLE
-        -->
-        <parameter name="testBrowser" value="chrome"/>
-        <classes>
-<!--            <class name="testNG.TC05_Parameters_MultiBrowsers"/>-->
-            <class name="testNG.TC06_A_Parameters_MultiBrowsers_MultiEnv"/>
-        </classes>
-    </test>
-    <test name="EDGE">
-        <!--
-            PARAMETER HERE IS LOCAL VARIABLE
-        -->
-        <parameter name="testBrowser" value="edge"/>
-        <classes>
-<!--            <class name="testNG.TC05_Parameters_MultiBrowsers"/>-->
-            <class name="testNG.TC06_A_Parameters_MultiBrowsers_MultiEnv"/>
-        </classes>
-    </test>
+
+<!--    <test name="CHROME">-->
+<!--        &lt;!&ndash;-->
+<!--            PARAMETER HERE IS LOCAL VARIABLE-->
+<!--        &ndash;&gt;-->
+<!--        <parameter name="testBrowser" value="chrome"/>-->
+<!--        <classes>-->
+<!--&lt;!&ndash;            <class name="testNG.TC05_Parameters_MultiBrowsers"/>&ndash;&gt;-->
+<!--            <class name="testNG.TC06_A_Parameters_MultiBrowsers_MultiEnv"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name="EDGE">-->
+<!--        &lt;!&ndash;-->
+<!--            PARAMETER HERE IS LOCAL VARIABLE-->
+<!--        &ndash;&gt;-->
+<!--        <parameter name="testBrowser" value="edge"/>-->
+<!--        <classes>-->
+<!--&lt;!&ndash;            <class name="testNG.TC05_Parameters_MultiBrowsers"/>&ndash;&gt;-->
+<!--            <class name="testNG.TC06_A_Parameters_MultiBrowsers_MultiEnv"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
 </suite>
